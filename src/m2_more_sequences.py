@@ -106,19 +106,13 @@ def shortest_string(strings):
     # DONE: 2. Implement and test this function.
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
-    first_string = 0
-    short_string = ''
-    for k in range(1, len(strings)):
-        if len(strings[k]) == len(strings[first_string]):
-            short_string = strings[first_string]
+    short = strings[0]
+    for string in strings:
+        if len(string) < len(short):
+            short = string
 
-        if len(strings[first_string]) > len(strings[k]):
-            short_string = strings[k]
+    return short
 
-        else:
-            short_string = strings[first_string]
-
-    return short_string
 
 def run_test_index_of_largest_number():
     """ Tests the   index_of_largest_number   function. """
@@ -192,10 +186,15 @@ def index_of_largest_number(numbers, n):
 
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
+    big_index = 0
+    for k in range(1, n):
+        if numbers[k] > numbers[big_index]:
+            big_index = k
 
+    return big_index
 
 # ----------------------------------------------------------------------
 # Some problems iterate (loop) through the sequence accessing TWO
@@ -247,9 +246,15 @@ def number_of_stutters(s):
        :type s: str
     """
     # ------------------------------------------------------------------
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
+    total = 0
+    for k in range(1, len(s)):
+        if s[k - 1] == s[k]:
+            total += 1
+
+    return total
 
 
 def run_test_is_palindrome():
@@ -320,7 +325,7 @@ def is_palindrome(s):
       :type s: str
     """
     # ------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # DONE: 5. Implement and test this function.
     #     The testing code is already written for you (above).
     #
     ####################################################################
@@ -329,7 +334,11 @@ def is_palindrome(s):
     #   above are particularly good examples to work by hand.
     ####################################################################
     # ------------------------------------------------------------------
+    for k in range(len(s)):
+        if not s[k] == s[len(s) - 1 - k]:
+            return False
 
+    return True
 
 # ----------------------------------------------------------------------
 # Some problems loop (iterate) through two or more sequences
@@ -387,10 +396,15 @@ def count_same(sequence1, sequence2):
       type: sequence2: tuple or list or string
     """
     # ------------------------------------------------------------------
-    # TODO: 6. Implement and test this function.
+    # DONE: 6. Implement and test this function.
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
+    total = 0
+    for k in range(len(sequence1)):
+        if sequence1[k] == sequence2[k]:
+            total += 1
 
+    return total
 
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
